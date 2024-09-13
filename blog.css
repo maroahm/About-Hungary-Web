@@ -1,0 +1,288 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+ body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f2f2f2;
+ }
+
+ .comment-container{
+    background: #fff;
+    padding: 20px;
+    font-family: monospace;
+    width: 500px;
+    border-radius: 10px;
+    z-index: -1;
+    box-shadow: 0 0 5px #000;
+    box-sizing: border-box;
+    opacity: 0;
+    top: -200%;
+    padding-bottom: 50px;
+    transform: translate(-50%,-50%) scale(0);
+    transition: opacity 300ms ease-in-out,
+                  top 1000ms ease-in-out,
+                  transform 1000ms ease-in-out;
+ }
+
+ .center{
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%,-50%);
+ }
+ .comment-container.active {
+   position: relative;
+   opacity: 1;
+   top: 50%;
+   position: fixed;
+   z-index: 1000;
+   transform: translate(-50%,-50%) scale(1);
+   transition: transform 300ms cubic-bezier(0.18,0.89,0.43,1.1);
+   
+}
+
+ .head {
+    text-transform: uppercase;
+    margin-bottom: 20px;
+ }
+
+ .text {
+    margin: 10px 0;
+    font-family: sans-serif;
+    font-size: 0.9em;
+ }
+
+ .commentbox{
+    display: flex;
+    padding: 10px;
+ }
+
+ .commentbox > img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 20px;
+    object-fit: cover;
+    object-position: center;
+ }
+
+ .content{
+    width: 100%;
+ }
+
+ .user{
+    border: none;
+    outline: none;
+    margin: 5px 0;
+    color: #808080;
+    margin-left: 20px;
+    padding: 10px;
+ }
+
+ .commentinput > input{
+    border: none;
+    padding: 10px;
+    padding-left: 0;
+    outline: none;
+    border-bottom: 2px solid blue;
+    margin-bottom: 10px;
+    width: 95%;
+ }
+
+ .buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items:center ;
+    color: #808080;
+
+ }
+
+ .buttons button{
+    padding: 6px 10px;
+    background: lightgrey;
+    color: #808080;
+    text-transform: uppercase;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+ }
+
+ 
+
+ .buttons button.abled {
+   background: blue;
+   color: #fff;
+ }
+
+ .notify{
+    margin-right:10px ;
+    display: flex;
+    align-items:center;
+ }
+
+ .notify > input{
+    margin-right:5px;
+ }
+
+ .parents{
+   font-family: Arial, sans-serif;
+   display: flex;
+   margin-bottom: 30px;
+ }
+
+ .parents h1 {
+   font-size: 0.9em;
+ }
+
+ .parents p{
+   margin: 10px 0;
+   font-size: 0.9em;
+ }
+
+ .parents >img {
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   margin-right: 20px;
+   object-fit: cover;
+   object-position: center;
+ }
+
+
+ .engagements {
+   display: flex;
+   align-items: center;
+   margin-bottom: 10px;
+ }
+
+ .engagements img{
+   width: 20px;
+ }
+
+ .engagements img:nth-child(1){
+   margin-right: 10px;
+   width: 25px;
+ }
+
+ .date {
+   color:#808080;
+   font-size: 0.8em;
+ }
+ .postBtn{
+    background-color: blue; 
+    color: white; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    position: absolute; 
+    top: 150px; 
+    left: 50%; 
+    transform: translateX(-50%);
+ }
+
+ .postBtn:hover {
+   background-color: darkblue;
+ }
+
+
+ .close-button {
+   background: none;
+   border: none;
+   padding: 0;
+   display: inline-flex;
+   background-color: white;
+   color: black;
+   cursor: pointer;
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   z-index: 1000;
+   padding: 5px;
+   margin: 0;
+   line-height: 1;
+   width: 20px; 
+   height: 20px;
+   font-size: 16px;
+   text-align: center;
+   border-radius: 50%;
+}
+
+.close-button img{
+   display: block;
+   width: 100%;
+   height: auto;
+}
+
+.close-button:focus {
+   outline: none; 
+}
+
+.close-button:hover {
+   background-color: lightgray;
+}
+
+
+.comment-container >div {
+   position:relative;
+   top: 10px;
+   opacity: 0;
+}
+
+.comment-container.active > div {
+   top: 0px;
+   opacity: 1;
+}
+.comment-container.active .head {
+   transition: all 300ms ease-in-out 250ms;
+}
+
+.comment-container.active .text {
+   transition: all 300ms ease-in-out 250ms;
+}
+
+.comment-container.active .commentbox {
+   transition: all 300ms ease-in-out 250ms;
+}
+
+.comment-container.active .user {
+   transition: all 300ms ease-in-out 250ms;
+}
+
+.comment-container.active .content {
+   transition: all 300ms ease-in-out 250ms;
+}
+
+.comment-container.active .commentinput {
+   transition: all 300ms ease-in-out 250ms;
+}
+
+.comment-container.active .usercomment {
+   transition: all 300ms ease-in-out 250ms;
+}
+
+.comment-container.active .notify {
+   transition: all 300ms ease-in-out 250ms;
+}
+
+.comments{
+   position: absolute;
+   top: 250px;
+   left: 10%;
+   right: 30%;
+   overflow-wrap: break-word;
+   word-break: break-word;
+   hyphens: auto;
+}

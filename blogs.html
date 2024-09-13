@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <script src="main.js" defer></script>
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="blog.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Traveler's Guide In Hungary</title>
+    </head>
+
+    <body>
+        <div id="top" data-include-slideshow = "false"></div>
+        
+        <button type="submit" class="postBtn center" id="postBtn">Post</button>
+        <div class="comment-container center">
+            <div>
+                <button class="close-button" id="close-button"><img src="close.jpeg" alt="exit"></button>
+            </div>
+            <div class="head"><h1>Post a Comment</h1></div>
+            <div class="text"><p>We are happy to hear from you</p></div>
+            <div class="commentbox">
+                <img src="user.png" alt="">
+                <div class="content">
+                    <h2>Comment as: </h2>
+                    <input type="text" value="Anonymous" class="user">
+                    <div class="commentinput">
+                        <textarea rows="10" cols="50" placeholder="Enter comment" class="usercomment"></textarea>
+                        <div class="buttons">
+                            <button type="submit" disabled id="publish">Publish</button>
+                            <div class="notify">
+                                <input type="checkbox" class="notifyinput"> <span>Notify me</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="comments"></div>
+        <script>
+            "use strict";
+
+            const userId = {
+                name: null,
+                identity: null,
+                image: null,
+                message: null,
+                date: null
+            }
+            
+            document.getElementById("postBtn").addEventListener("click", function(){
+                document.getElementsByClassName("comment-container")[0].classList.add("active");
+            });
+            document.getElementById("close-button").addEventListener("click", function(){
+                document.getElementsByClassName("comment-container")[0].classList.remove("active");
+            });
+            
+            const userComment = document.querySelector(".usercomment");
+            const publishBtn = document.querySelector("#publish");
+            const comments = document.querySelector(".comments");
+            const userName = document.querySelector(".user");
+
+            userComment.addEventListener("input", e => {
+                if(!userComment.value){
+                    publishBtn.setAttribute("disabled", "disabled");
+                    publishBtn.classList.remove("abled")
+                }else{
+                    publishBtn.removeAttribute("disabled");
+                    publishBtn.classList.add("abled")
+                }
+            })
+
+
+            function addPost() {
+                console.log("the button works")
+                if(!userComment.value) return;
+                userId.name = userName.value;
+                if(userId.name === "Anonymous") {
+                    userId.identity = false;
+                    userId.image = "anonymous.png";
+                }else{
+                    userId.identity = true;
+                    userId.image = "user.png"
+                }
+
+                userId.message = userComment.value;
+                userId.date = new Date().toLocaleString();
+                let published = 
+                `<div class="parents">
+                    <img src="${userId.image}"> 
+                    <div>
+                        <h1>${userId.name}</h1>
+                        <p>${userId.message}</p>
+                        <div class="engagements"><img src="like.png"><img src="share.png"></div>
+                        <span class ="date">${userId.date}</span>
+
+                    </div>   
+                </div>`;
+
+                comments.innerHTML += published;
+                userComment.value = "";
+                let commentsNum = document.querySelectorAll()
+            }
+            publishBtn.addEventListener("click", addPost)
+
+        </script>
+    </body>
+</html>
